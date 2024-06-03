@@ -2,7 +2,7 @@ import pulp
 
 
 
-def solver():
+def solver(g1, g2):
 
     # Initialize a maximization problem
     prob = pulp.LpProblem("ask1", pulp.LpMaximize)
@@ -14,7 +14,7 @@ def solver():
     x4 = pulp.LpVariable("x4", lowBound=0, cat=pulp.const.LpContinuous)
 
     # Objective function
-    prob += 5*x1 + 3*x2 + x3 + 4*x4, "obj"
+    prob += (5+g1)*x1 + (3+g2)*x2 + x3 + 4*x4, "obj"
 
     # Constraints
     prob += x1 - 2*x2 + 2*x3 + 3*x4 <= 10, "c1"
@@ -33,13 +33,15 @@ def solver():
 
     # Print the value of the variables at the optimum
     for v in prob.variables():
-        print(f'{v.name} = {v.varValue:5.2f}')
+        print(f'{v.name} = {v.varValue}')
 
     # Print the shadow price and slack of the constraints
     print("\nSensitivity Analysis\nConstraint\t\t\t\tShadow Price\t\tSlack")
     for name, c in prob.constraints.items():
-        print(f'{name} : {c}\t\t{c.pi:.2f}\t\t{c.slack:.2f}')
+        print(f'{name} : {c}\t\t{c.pi}\t\t{c.slack}')
+    
+
 
 
 if __name__ == '__main__':
-    solver()
+    solver(34, 6)
