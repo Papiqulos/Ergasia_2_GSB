@@ -71,12 +71,13 @@ def tolerance_range():
     
     b = np.array([10., 6., 10., 7.])
     e1 = np.array([1., 0., 0., 0.])
+    e2 = np.array([0., 1., 0., 0.])
     
     cB = np.array([3., 1., 4., 0.])
     cN = np.array([5., 0., 0., 0.])
 
     B_inv = np.linalg.inv(B)
-    dot = B_inv @ e1
+    dot = B_inv @ e2
     return dot
     
     
@@ -84,5 +85,5 @@ def tolerance_range():
 
 
 if __name__ == '__main__':
-    solver(g1=-1)
+    solver(g1=4.3)
     # print(tolerance_range())
