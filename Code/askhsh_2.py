@@ -176,6 +176,8 @@ def helper():
 
 
 if __name__ == "__main__":
-    # solver_primal()
+    solver_primal()
+    print("-----------------------------------------")
     solver_dual()
-    # helper()
+    print("-----------------------------------------")
+    helper()
