@@ -140,9 +140,10 @@ def helper():
     print(f"Dual objective: {objective_dual}")
 
 
-    
 
 if __name__ == "__main__":
-    # solver_primal()
-    # solver_dual()
+    solver_primal()
+    print("-----------------------------------------")
+    solver_dual()
+    print("-----------------------------------------")
     helper()
