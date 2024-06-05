@@ -132,7 +132,7 @@ def helper():
     x = np.array([15/2, 0, 11/4, 0, 5/2, 0, 3/4])
 
     # Possible solution of the dual problem when c1, c3, c5, c7 are set to equals
-    y = np.array([1, 1, 1, 0])
+    y = np.array([1., 1., 1., 0.])
 
     objective_primal = c_primal @ x
     objective_dual = c_dual @ y
