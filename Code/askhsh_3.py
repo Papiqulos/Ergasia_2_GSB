@@ -5,7 +5,7 @@ def solver():
     # Initialize a minimization problem
     prob = pulp.LpProblem("ask3", pulp.LpMinimize)
 
-    # Basic Variables
+    # Variables
     x1 = pulp.LpVariable("x1", upBound=2, cat=pulp.const.LpContinuous)
     x2 = pulp.LpVariable("x2", upBound=5, cat=pulp.const.LpContinuous)
     x3 = pulp.LpVariable("x3", upBound=2, cat=pulp.const.LpContinuous)
@@ -21,7 +21,7 @@ def solver():
 
 
     # Solve the problem using the default solver
-    prob.solve()
+    prob.solve(pulp.PULP_CBC_CMD(msg=0))
 
     # Print the status of the solved LP
     print("--------------------------------------")

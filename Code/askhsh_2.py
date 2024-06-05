@@ -22,7 +22,7 @@ def solver_primal():
     # Initialize a maximization problem
     prob = pulp.LpProblem("Primal", pulp.LpMaximize)
 
-    # Basic Variables
+    # Variables
     x1 = pulp.LpVariable("x1", cat=pulp.const.LpContinuous)
     x2 = pulp.LpVariable("x2", lowBound=0, cat=pulp.const.LpContinuous)
     x3 = pulp.LpVariable("x3", lowBound=0, cat=pulp.const.LpContinuous)
@@ -43,7 +43,7 @@ def solver_primal():
 
     
     # Solve the problem using the default solver
-    prob.solve()
+    prob.solve(pulp.PULP_CBC_CMD(msg=0))
 
     # Print the status of the solved LP
     print("Status:", pulp.LpStatus[prob.status])
@@ -79,7 +79,7 @@ def solver_dual():
     # Initialize a minimization problem
     prob = pulp.LpProblem("Dual", pulp.LpMinimize)
 
-    # Basic Variables
+    # Variables
     y1 = pulp.LpVariable("y1", cat=pulp.const.LpContinuous)
     y2 = pulp.LpVariable("y2", lowBound=0, cat=pulp.const.LpContinuous)
     y3 = pulp.LpVariable("y3", lowBound=0, cat=pulp.const.LpContinuous)
@@ -100,7 +100,7 @@ def solver_dual():
 
 
     # Solve the problem using the default solver
-    prob.solve()
+    prob.solve(pulp.PULP_CBC_CMD(msg=0))
 
     # Print the status of the solved LP
     print("Status:", pulp.LpStatus[prob.status])
