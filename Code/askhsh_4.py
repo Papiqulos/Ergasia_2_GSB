@@ -5,7 +5,7 @@ def solver_primal():
     """Solve the linear programming problem using the PuLP library. The problem is defined as:
     maximize x1 + 2*x2 + x3 - 3*x4 x5 + x6 - x7
     subject to:
-        x1 + x2 - x4 + x5 + 2*x6 - 2*x7 <= 6
+        x1 + x2 - x4 + 2*x6 - 2*x7 <= 6
         x2 - x4 + x5 - 2*x6 + 2*x7 <= 4
         x2 + x3 + x6 - x7 <= 2
         x2 - x4 - x6 + x7 <= 1 
@@ -31,10 +31,13 @@ def solver_primal():
     prob += x1 + 2*x2 + x3 - 3*x4 + x5 + x6 - x7, "obj"
 
     # Constraints
-    prob += x1 + x2 - x4 + x5 + 2*x6 - 2*x7 <= 6, "c1"
+    prob += x1 + x2 - x4 + 2*x6 - 2*x7 <= 6, "c1"
     prob += x2 - x4 + x5 - 2*x6 + 2*x7 <= 4, "c2"
     prob += x2 + x3 + x6 - x7 <= 2, "c3"
     prob += x2 - x4 - x6 + x7 <= 1, "c4"
+
+
+    
 
     
     # Solve the problem using the default solver
@@ -54,7 +57,6 @@ def solver_primal():
     print("\nSensitivity Analysis\nConstraint\t\t\t\tShadow Price\t\tSlack")
     for name, c in prob.constraints.items():
         print(f'{name} : {c}\t\t{c.pi}\t\t{c.slack}')
-
 
 def solver_dual():
     """
@@ -110,31 +112,37 @@ def solver_dual():
 
 def helper():
 
+    # Primal problem
     b_primal = np.array([6, 4, 2, 1])
     c_primal = np.array([1, 2, 1, -3, 1, 1, -1])
 
-    A_primal = np.array([[1, 1, 0, -1, 1, 2, -2],
+    A_primal = np.array([[1, 1, 0, -1, 0, 2, -2],
                         [0, 1, 0, -1, 1, -2, 2],
                         [0, 1, 1, 0, 0, 1, -1],
                         [0, 1, 0, -1, 0, -1, 1]])
+    
+    # Dual problem
+    b_dual = c_primal
+    c_dual = b_primal
 
     A_dual = A_primal.T
 
-    # Given basic solution
+    # Given solution
+    # x1, x3, x5, x7 are the basic variables
     x = np.array([15/2, 0, 11/4, 0, 5/2, 0, 3/4])
 
-    # Basic matrix form basic solution
-    B = np.array([
-                [1, 0, 1, 1],
-                [0, 0, 1, 2],
-                [0, 1, 0, -1],
-                [0, 0, 0, 1]
-                ])
+    # Possible solution of the dual problem when c1, c3, c5, c7 are set to equals
+    y = np.array([1, 1, 1, 0])
 
-    return B
+    objective_primal = c_primal @ x
+    objective_dual = c_dual @ y
+    print(f"Primal objective: {objective_primal}")
+    print(f"Dual objective: {objective_dual}")
+
+
     
 
 if __name__ == "__main__":
-    solver_primal()
+    # solver_primal()
     # solver_dual()
-    # print(helper())
+    helper()
