@@ -173,8 +173,6 @@ def helper():
     print(f"Determinant of Primal B: {np.linalg.det(B):.2f}")
     print(f"Determinant of Dual B: {np.linalg.det(Bc):.2f}")
 
-
-
 if __name__ == "__main__":
     solver_primal()
     print("-----------------------------------------")

@@ -139,8 +139,6 @@ def helper():
     print(f"Primal objective: {objective_primal}")
     print(f"Dual objective: {objective_dual}")
 
-
-
 if __name__ == "__main__":
     solver_primal()
     print("-----------------------------------------")

@@ -41,6 +41,5 @@ def solver():
     for name, c in prob.constraints.items():
         print(f'{name} : {c}\t\t{c.pi:.2f}\t\t{c.slack:.2f}')
 
-
 if __name__ == '__main__':
     solver()

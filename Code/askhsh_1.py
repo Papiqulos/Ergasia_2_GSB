@@ -107,7 +107,7 @@ def solver_dual():
         print(f'{name} : {c}\t\t{c.pi}\t\t{c.slack}')
 
 def helper():
-    """Various operations with numpy arrays necessary to find the tolerance ranges of the above linear programming problem."""
+    """Various numpy arrays necessary to find the tolerance ranges of the above linear programming problem."""
     B = np.array([[-2., 2., 3., 1],
                   [2., 2., -1., 0],
                   [1., -1., 1., 0],
@@ -126,12 +126,9 @@ def helper():
     cN = np.array([5., 0., 0., 0.])
 
     B_inv = np.linalg.inv(B)
-    dot = B_inv @ e2
-
-    
-    
+   
 if __name__ == '__main__':
-    solver_primal(g1=4.3)
+    solver_primal()
     print("-----------------------------------------")
     solver_dual()
     print("-----------------------------------------")
