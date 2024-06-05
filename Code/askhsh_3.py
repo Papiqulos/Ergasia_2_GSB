@@ -1,7 +1,5 @@
 import pulp
 
-
-
 def solver():
 
     # Initialize a minimization problem

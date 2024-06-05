@@ -1,8 +1,6 @@
 import numpy as np
 import pulp
 
-
-
 def solver_primal(g1=0, g2=0):
     """Solve the linear programming problem using the PuLP library. The problem is defined as:
     maximize 5*x1 + 3*x2 + x3 + 4*x4

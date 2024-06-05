@@ -1,7 +1,6 @@
 import pulp
 import numpy as np
 
-
 def solver():
     pass
 
