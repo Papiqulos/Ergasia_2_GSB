@@ -53,11 +53,6 @@ def generate_cutting_planes():
     print(c2)
     print(c3)
 
-
-    
-
-
-
 if __name__ == "__main__":
     constraint_compression()
     print("-----------------------------------------")
@@ -67,7 +62,7 @@ if __name__ == "__main__":
 
 
 
-
+# The LP problems with the new cutting planes are:
 """
 MAX Z = 23x1 + 17x2 + 30x3 + 14x4 + 9x5
 subject to
