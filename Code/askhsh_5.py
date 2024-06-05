@@ -58,10 +58,6 @@ if __name__ == "__main__":
     print("-----------------------------------------")
     generate_cutting_planes()
 
-
-
-
-
 # The LP problems with the new cutting planes are:
 """
 MAX Z = 23x1 + 17x2 + 30x3 + 14x4 + 9x5
